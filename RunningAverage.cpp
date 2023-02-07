@@ -19,19 +19,20 @@ class RunningAverage
 int RunningAverage::calcRunningAverage(int avgLimit)
 {
 	int average =0;
+	int limit = avgLimit;
 	for (vector<int>::reverse_iterator it = input.rbegin(); it != input.rend(); ++it)
 	{
-		if(avgLimit > 0)
+		if(limit > 0)
 		{
 			average += *it;
-			avgLimit --;
+			limit --;
 		}
 		else
 		{
 			break;
 		}
 	}
-	return average;
+	return (average/avgLimit);
 }
 
 int main()
@@ -41,7 +42,7 @@ int main()
 	avg.insertItem(2);
 	avg.insertItem(3);
 	avg.insertItem(4);	
-	cout << "RunningAverage: " << avg.calcRunningAverage(3) << endl; //output 9
+	cout << "RunningAverage: " << avg.calcRunningAverage(3) << endl; //output 3
 	avg.insertItem(5);
-	cout << "RunningAverage: " << avg.calcRunningAverage(3) << endl;	//output 12
+	cout << "RunningAverage: " << avg.calcRunningAverage(3) << endl;	//output 4
 }
